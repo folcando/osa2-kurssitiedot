@@ -20,9 +20,12 @@ const Content = ({parts}) => {
   )
 }
 
-const Total = (props) => {
-  let total = 0
-  props.parts.forEach(part => total += part.exercises)
+const Total = ({parts}) => {
+  const exercisesArray = parts.map(part => part.exercises)
+  const total = exercisesArray.reduce(
+    (accumulator, i) => accumulator + i,
+    0
+  )
   return (
     <b>Total number of exercises: {total}</b>
   )
